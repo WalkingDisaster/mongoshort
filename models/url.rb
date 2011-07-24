@@ -24,6 +24,10 @@ class URL
     end
   end
 
+  def self.get_all()
+    self.all
+  end
+
   def short_url
     # Note that if running locally, 'Sinatra::Application.host' will return '0.0.0.0'.
     if Sinatra::Application.port == 80

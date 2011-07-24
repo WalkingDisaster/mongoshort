@@ -9,14 +9,17 @@ var ShortenedUrl = Backbone.Model.extend({
   }
 });
 
-var miku = new ShortenedUrl({
-  full_url: "http://www.asadf.com"
+var ShortenedUrlCollection = Backbone.Collection.extend({
+  model: ShortenedUrl,
+  url: "/urls"
 });
+
+var urls = new ShortenedUrlCollection();
+urls.fetch();
 
 function saveUrl()
 {
-  var lulu = new ShortenedUrl({
+  var lulu = urls.create({
     full_url: $("#full_url").val()
   });
-  lulu.save();
 }

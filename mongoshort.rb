@@ -53,6 +53,11 @@ get '/' do
   erb :index
 end
 
+get '/urls' do
+  urls = URL.get_all
+  return urls.to_json
+end
+
 get '/:url' do
   url = URL.find_by_url_key(params[:url])
   if url.nil?
