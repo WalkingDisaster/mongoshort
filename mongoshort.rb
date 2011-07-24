@@ -49,8 +49,8 @@ helpers do
 end
 
 get '/' do
-  # You can set up an index page (under the /public directory).
-  "MongoShort"
+ # You can set up an index page (under the /public directory).
+  erb :index
 end
 
 get '/:url' do
@@ -65,17 +65,31 @@ get '/:url' do
   end
 end
 
-post '/new' do
+post '/url' do
   protected!
   content_type :json
   
-  if !params[:url]
-    status 400
-    return { :error => "'url' parameter is missing" }.to_json
-  end
+  uhhhh = JSON.parse(request.body.read.to_s)
+
+#  if !params[:full_url]
+#    status 400
+#    return { :error => "'url' parameter is missing" }.to_json
+#  end
   
-  url = URL.find_or_create(params[:url])
+  url = URL.find_or_create(uhhhh['full_url']);
   return url.to_json
+end
+
+put '/url' do
+
+end
+
+get '/url/:url_key' do
+
+end
+
+get '/urls' do
+  
 end
 
 not_found do
