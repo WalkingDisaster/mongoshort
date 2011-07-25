@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>I have a back bone</title>
+  <title id="title"></title>
 </head>
 <body>
-  <form action="javascript:saveUrl();" method="POST">
-    <label for="full_url">Enter URL:</label><input type="text" id="full_url" name="full_url" />
-    <input type="submit" value="Submit" />
-  </form>
+ <div id="content"></div>
+  <script id="urlTemplate" type="text/html">
+    <ul>
+      {{#urls}}
+      <li>{{full_url}} -- {{url_key}}</li>
+      {{/urls}}
+    </ul>
+    <input id="addNew" type="button" value="New" />
+  </script>
+  <script id="newTemplate" type="text/html">
+    <label for="full_url">URL:</label><input type="text" name="full_url" id="full_url" /><br />
+    <input type="button" id="create" value="Create" />
+  </script>
+
   <script src="/scripts/jquery.js"></script>
   <script src="/scripts/underscore.js"></script>
   <script src="/scripts/backbone.js"></script>
+  <script src="/scripts/ICanHaz.js"></script>
   <script src="/scripts/test.js"></script>
+
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        App.init();
+    });
+  </script>
 </body>
 </html>

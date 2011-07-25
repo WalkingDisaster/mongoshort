@@ -49,7 +49,12 @@ helpers do
 end
 
 get '/' do
- # You can set up an index page (under the /public directory).
+  # You can set up an index page (under the /public directory).
+  erb :index
+end
+
+get '/add' do
+  # You can set up an index page (under the /public directory).
   erb :index
 end
 
